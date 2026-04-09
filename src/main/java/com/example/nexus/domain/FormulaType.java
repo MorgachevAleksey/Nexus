@@ -6,6 +6,6 @@ public class FormulaType {
         NOT,
         AND,
         OR,
-        IMPLIES
+        IMPLIES,
     }
 }

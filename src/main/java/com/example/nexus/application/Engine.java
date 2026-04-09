@@ -2,22 +2,24 @@ package com.example.nexus.application;
 
 import com.example.nexus.domain.Board;
 import com.example.nexus.domain.FormulaNode;
-import com.example.nexus.application.FromulaParser;
 
 public class Engine {
-    //Доска
-    private final Board board;
-
-    public Engine(Board board){
+    public Engine(Board board, char[] tree){
         this.board = board;
+        this.tree = tree;
     }
 
+    //Доска
+    private final Board board;
     public Board getBoard() {
         return board;
     }
 
     //Дерево
-    public char[] stingTree = {'(', '0', '&', '1', ')', '#', '1'};
-    public final FromulaParser treeParser;
-    public FormulaNode[] tree = treeParser.buildTree(char[] stringTree);
+    //TODO Считать из строки и преобразовать в char[]
+    FormulaNode root = FormulaParser.buildTree();
+    private char[] tree = FormulaEvaluator.evaluateTree(root);
+    public char[] getTree(){
+        return tree;
+    }
 }

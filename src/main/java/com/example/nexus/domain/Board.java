@@ -13,7 +13,7 @@ public class Board {
 
         cells = new Cell[width][height];
         for(int i = 0; i < this.width; i++){
-            for(int j = 0; j < this.width; j++){
+            for(int j = 0; j < this.height; j++){
                 cells[i][j] = new Cell(true, ' ', "green");
             }
         }
