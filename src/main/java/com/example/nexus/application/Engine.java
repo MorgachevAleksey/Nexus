@@ -4,9 +4,9 @@ import com.example.nexus.domain.Board;
 import com.example.nexus.domain.FormulaNode;
 
 public class Engine {
-    public Engine(Board board, char[] tree){
+    public Engine(Board board, char[] stringTree){
         this.board = board;
-        this.tree = tree;
+        this.stringTree = stringTree;
     }
 
     //Доска
@@ -17,9 +17,11 @@ public class Engine {
 
     //Дерево
     //TODO Считать из строки и преобразовать в char[]
-    FormulaNode root = FormulaParser.buildTree();
-    private char[] tree = FormulaEvaluator.evaluateTree(root);
+    private char[] stringTree;
+    FormulaNode root = FormulaParser.buildTree(this.stringTree);
+    private char[] Tree = FormulaEvaluator.evaluateTree(root);
+
     public char[] getTree(){
-        return tree;
+        return Tree;
     }
 }

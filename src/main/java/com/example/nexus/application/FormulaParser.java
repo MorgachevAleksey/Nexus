@@ -10,11 +10,11 @@ public class FormulaParser {
         return stringTree;
     }
 
-    public static FormulaNode buildTree(){
+    public static FormulaNode buildTree(char[] stringTree){
         FormulaNode[] tree = new FormulaNode[3];
         tree[0]= new FormulaNode(FormulaType.formulaType.ATOM, true);
-        tree[1]= new FormulaNode(FormulaType.formulaType.AND, tree[0], tree[2]);
         tree[2]= new FormulaNode(FormulaType.formulaType.ATOM, false);
+        tree[1]= new FormulaNode(FormulaType.formulaType.AND, tree[0], tree[2]);
         return tree[1];
     }
 }
