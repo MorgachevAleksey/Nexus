@@ -10,9 +10,10 @@ import com.example.nexus.domain.Board;
     public static void render(Board board){
         for (int j = 0; j < board.getHeight(); j++) {
             for (int i = 0; i < board.getWidth(); i++) {
-                System.out.print("- |");
+                System.out.print(".");
             }
             System.out.println();
         }
+
     }
 }
