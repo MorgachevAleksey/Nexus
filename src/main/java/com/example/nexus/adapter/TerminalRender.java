@@ -19,7 +19,7 @@ import com.example.nexus.domain.Board;
         }
     }
 
-    public static void treeRender(char[] tree){
+    public static void treeRender(String tree){
         System.out.println(tree);
     }
 }

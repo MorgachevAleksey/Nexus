@@ -1,7 +1,7 @@
 package com.example.nexus.domain;
 
 public class FormulaType {
-    public enum formulaType {
+    public enum Type {
         ATOM,
         NOT,
         AND,

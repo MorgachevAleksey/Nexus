@@ -4,24 +4,30 @@ import com.example.nexus.domain.Board;
 import com.example.nexus.domain.FormulaNode;
 
 public class Engine {
-    public Engine(Board board, char[] stringTree){
+    private final Board board;
+    private static String tree;
+
+    public Engine(Board board, String data){
         this.board = board;
-        this.stringTree = stringTree;
+        this.tree = data;
     }
 
     //Доска
-    private final Board board;
     public Board getBoard() {
         return board;
     }
 
     //Дерево
-    //TODO Считать из строки и преобразовать в char[]
-    private char[] stringTree;
-    FormulaNode root = FormulaParser.buildTree(this.stringTree);
-    private char[] Tree = FormulaEvaluator.evaluateTree(root);
-
-    public char[] getTree(){
-        return Tree;
+    public static String rezultTree(String data){
+        FormulaNode root = FormulaParser.parsing(data);
+        boolean rezult = FormulaEvaluator.evaluate(root);
+        if (rezult == true){
+            return tree + "=1";
+        } else if (rezult == false){
+            return  tree + "=0";
+        }
+        else {
+            return "error";
+        }
     }
 }

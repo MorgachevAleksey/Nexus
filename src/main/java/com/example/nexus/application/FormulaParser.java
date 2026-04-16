@@ -5,16 +5,28 @@ import com.example.nexus.domain.FormulaType;
 
 //Строит структуру
 public class FormulaParser {
-    public static char[] getStringTree(){
-        char[] stringTree = {'1', '&', '0'};
-        return stringTree;
+    static int position;
+
+    public static FormulaNode parsing(String data){
+        FormulaNode root = null;
+        while (position < data.length()){
+            if (data.charAt(position) == '&'){
+                root = new FormulaNode(FormulaType.Type.AND, atom_creating(String.valueOf(data.charAt(position - 1))), null);
+                root.setRight(atom_creating(String.valueOf(data.charAt(position + 1))));
+            }
+            position++;
+        }
+        return root;
     }
 
-    public static FormulaNode buildTree(char[] stringTree){
-        FormulaNode[] tree = new FormulaNode[3];
-        tree[0]= new FormulaNode(FormulaType.formulaType.ATOM, true);
-        tree[2]= new FormulaNode(FormulaType.formulaType.ATOM, false);
-        tree[1]= new FormulaNode(FormulaType.formulaType.AND, tree[0], tree[2]);
-        return tree[1];
+    public static FormulaNode atom_creating(String element){
+        FormulaNode node = null;
+        if (element.equals("0")) {
+            node = new FormulaNode(FormulaType.Type.ATOM, false);
+        }
+        else if (element.equals("1")) {
+            node = new FormulaNode(FormulaType.Type.ATOM, true);
+        }
+        return node;
     }
 }
