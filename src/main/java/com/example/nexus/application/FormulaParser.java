@@ -5,9 +5,8 @@ import com.example.nexus.domain.FormulaType;
 
 //Строит структуру
 public class FormulaParser {
-    static int position;
-
     public static FormulaNode parsing(String data){
+        int position = 0;
         FormulaNode root = null;
         while (position < data.length()){
             if (data.charAt(position) == '&'){
